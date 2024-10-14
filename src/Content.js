@@ -1,38 +1,18 @@
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
+
 import React from 'react'
+import ItemList from './ItemList';
 
 const Content = ({values,handleCheck,handleDelete,handleEdit}) => {
 
   return (
   <main>
      {(values.length) ? (
-  <ul>
-     {values.map ((item) => (
-      <li className="item" key={item.id}>
-      <input
-          type="checkbox"
-          onChange ={() => handleCheck(item.id)}
-          checked={item.checked}
-      />
-
-      <label 
-      style = { (item.checked) ? {textDecoration:'line-through'} : null }
-      onDoubleClick={() => handleCheck(item.id)}>{item.item}</label>
-       <EditIcon
-        onClick = {() => handleEdit(item.id)}
-        role="button"
-        tabIndex="0"
+       <ItemList 
+          values ={values}
+         handleCheck ={handleCheck}
+         handleDelete ={handleDelete}
+         handleEdit ={handleEdit}
        />
-       <DeleteIcon 
-       onClick ={() => handleDelete(item.id)}
-        role="button"
-        tabIndex="0"
-       />
-      </li>
-     ))}
-    
-  </ul>
       ) :
      (
      <p style={{ marginTop:'10rem'}}>The List is EMPTY</p>

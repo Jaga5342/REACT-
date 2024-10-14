@@ -2,29 +2,28 @@ import Header from "./Header";
 import Content from "./Content";
 import Footer from "./Footer";
 import {useState} from 'react';
+import AddItem from "./AddItem";
+import SearchItem from "./SearchItem";
 function App() {
   
-  const [values,setNew] = useState(
-    [
-    { id:1,
-      checked:true,
-      item:"Drawing",
-    },
-    {id:2,
-      checked:false,
-      item:"Writing",
-    },
-    {id:3,
-      checked:true,
-      item:"Cricket",
-   },
-   {id:4,
-   checked:false,
-   item:"Money",
-   }
+  const [values,setNew] = useState(JSON.parse(localStorage.getItem('todo-list'))
+   );
+const [newItem,setNewItem]= useState('')
 
-]);
+//search items
+const [search,setSearch]=useState ('')
+
+
+//adding items
+const addItem =(item) =>{
+  const id =values.length ? values[values.length - 1].id + 1 : 1;
+  const  addNewItem ={id ,checked:false,item}
+  const listItems =[...values,addNewItem]
+  setNew(listItems)
+  localStorage.setItem("todo-list",JSON.stringify(listItems))
+}
     //For values checking process
+  
     const handleCheck = (id) =>
       {
       const newItems =values.map((item) =>
@@ -48,11 +47,32 @@ function App() {
         setNew(newItems)
       }
 
+      const handleSubmit = (e) => 
+      {
+        e.preventDefault();
+        
+        if(!newItem ) return ;
+        console.log(newItem);
+        addItem(newItem)
+        setNewItem('')
+        //addItem
+
+      }
+
 return (
   <div className="App">
      <Header />
+     <AddItem 
+      newItem ={newItem}
+      setNewItem ={setNewItem}
+      handleSubmit ={handleSubmit}
+     />
+     <SearchItem 
+      search ={search}
+      setSearch ={setSearch}
+     /> 
      <Content 
-      values ={values}
+      values ={values.filter(item => ((item.item).toLowerCase()).includes(search.toLowerCase()))}
       
       handleCheck ={handleCheck}
       handleDelete ={handleDelete}
