@@ -2,7 +2,7 @@ import React from 'react'
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
-function LineItem ({item,handleCheck,handleDelete,handleEdit}){
+function LineItem ({item,handleCheck,handleDelete,handleEdit }){
   return (
     <li className="item" key={item.id}>
       <input

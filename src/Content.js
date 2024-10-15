@@ -2,7 +2,7 @@
 import React from 'react'
 import ItemList from './ItemList';
 
-const Content = ({values,handleCheck,handleDelete,handleEdit}) => {
+const Content = ({values,handleCheck,handleDelete,handleEdit,handleSave}) => {
 
   return (
   <main>
@@ -12,6 +12,7 @@ const Content = ({values,handleCheck,handleDelete,handleEdit}) => {
          handleCheck ={handleCheck}
          handleDelete ={handleDelete}
          handleEdit ={handleEdit}
+         handleSave ={handleSave}
        />
       ) :
      (

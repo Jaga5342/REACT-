@@ -1,7 +1,7 @@
 import Header from "./Header";
 import Content from "./Content";
 import Footer from "./Footer";
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import AddItem from "./AddItem";
 import SearchItem from "./SearchItem";
 function App() {
@@ -12,6 +12,7 @@ const [newItem,setNewItem]= useState('')
 
 //search items
 const [search,setSearch]=useState ('')
+const [editItemId, setEditItemId] = useState(null);
 
 
 //adding items
@@ -40,7 +41,7 @@ const addItem =(item) =>{
           localStorage.setItem("todo-list",JSON.stringify(newItems))
             }  
       //For edit 
-      const handleEdit =(id) =>
+      /*const handleEdit =(id) =>
       {
         const newItems =values.map((item)=>
           item.id === id )
@@ -57,7 +58,37 @@ const addItem =(item) =>{
         setNewItem('')
         //addItem
 
-      }
+      }*/
+     // For edit
+  const handleEdit = (id) => {
+    const itemToEdit = values.find(item => item.id === id);
+    if (itemToEdit) {
+      setNewItem(itemToEdit.item); // Set the item text to the input
+      setEditItemId(id); // Set the current id to edit
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    if (!newItem) return;
+
+    if (editItemId) {
+      // Update the existing item
+      const updatedItems = values.map(item =>
+        item.id === editItemId ? { ...item, item: newItem } : item
+      );
+      setNew(updatedItems);
+      localStorage.setItem("todo-list", JSON.stringify(updatedItems));
+      setEditItemId(null); // Reset edit state
+    } else {
+      // Add new item
+      addItem(newItem);
+    }
+
+    setNewItem(''); // Clear input
+  };
+
 
 return (
   <div className="App">
