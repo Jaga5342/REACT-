@@ -4,6 +4,9 @@ import Footer from "./Footer";
 import {useState,useEffect} from 'react';
 import AddItem from "./AddItem";
 import SearchItem from "./SearchItem";
+
+
+
 function App() {
   
   const [values,setNew] = useState(JSON.parse(localStorage.getItem('todo-list'))

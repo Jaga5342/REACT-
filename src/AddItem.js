@@ -2,8 +2,8 @@ import React from 'react'
 import AddIcon from '@mui/icons-material/Add';
 const AddItem = ({newItem,setNewItem,handleSubmit}) => {
   return (
-   <form className='addForm' onSubmit ={handleSubmit}>
-   <label htmlFor="addItem">Add Item</label>
+   <form className='addForm d-flex justify-content-center align-items-center mb-1' onSubmit ={handleSubmit}>
+   <div className="input-group ">
    <input 
    autoFocus
    id ='addItem'
@@ -11,16 +11,17 @@ const AddItem = ({newItem,setNewItem,handleSubmit}) => {
     placeholder ="Add Item"
     required
     value ={newItem}
+    
     onChange ={(e) => setNewItem(e.target.value)}
    />
-   <button
+   <button 
+   
+   className="bi bi-plus-lg bg-primary"
    type="submit"
    aria-label ="Add Item"
    >
-   <AddIcon
-    />
-    <label htmlFor="searchItem">Search Item</label>
    </button>
+   </div>
    </form>
   )
 }
