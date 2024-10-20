@@ -16,6 +16,7 @@ const AddItem = ({newItem,setNewItem,handleSubmit}) => {
    <button
    type="submit"
    aria-label ="Add Item"
+
    >
    <AddIcon
     />
