@@ -1,5 +1,7 @@
 import React from 'react'
-import AddIcon from '@mui/icons-material/Add';
+
+
+
 const AddItem = ({newItem,setNewItem,handleSubmit}) => {
   return (
    <form className='addForm d-flex justify-content-center align-items-center mb-1' onSubmit ={handleSubmit}>
@@ -14,8 +16,8 @@ const AddItem = ({newItem,setNewItem,handleSubmit}) => {
     
     onChange ={(e) => setNewItem(e.target.value)}
    />
-   <button 
    
+   <button 
    className="bi bi-plus-lg bg-primary"
    type="submit"
    aria-label ="Add Item"
@@ -27,3 +29,4 @@ const AddItem = ({newItem,setNewItem,handleSubmit}) => {
 }
 
 export default AddItem
+

@@ -8,7 +8,7 @@ const Content = ({values,handleCheck,handleDelete,handleEdit,handleSave}) => {
   <main>
   <div className="container justify-content-center align-items-center ">
      <div className="row">
-     <div className ="col-12 ">
+     <div className ="col-sm-12">
      {(values.length) ? (
        <ItemList 
           values ={values}
